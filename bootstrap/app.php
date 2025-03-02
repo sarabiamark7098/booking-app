@@ -12,8 +12,17 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->append([
+            // \App\Http\Middleware\ExampleGlobalMiddleware::class,
+        ]);
+
+        // Register route middleware here
+        $middleware->alias([
+            'check.beneficiary' => \App\Http\Middleware\CheckBeneficiary::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
+
+    

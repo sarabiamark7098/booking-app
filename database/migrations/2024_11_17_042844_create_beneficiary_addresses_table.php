@@ -23,13 +23,13 @@ return new class extends Migration
             $table->unsignedBigInteger('district_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('transaction_id')->references('transaction_id')->on('transactions')->cascadeOnDelete('set null')->cascadeOnUpdate('cascade');
-            $table->foreign('beneficiary_id')->references('beneficiary_id')->on('beneficiary_datas')->cascadeOnDelete('set null')->cascadeOnUpdate('cascade');
-            $table->foreign('region_id')->references('region_id')->on('regions')->cascadeOnDelete('set null')->cascadeOnUpdate('cascade');
-            $table->foreign('province_id')->references('province_id')->on('provinces')->cascadeOnDelete('set null')->cascadeOnUpdate('cascade');
-            $table->foreign('municipality_id')->references('municipality_id')->on('municipalities')->cascadeOnDelete('set null')->cascadeOnUpdate('cascade');
-            $table->foreign('barangay_id')->references('barangay_id')->on('barangays')->cascadeOnDelete('set null')->cascadeOnUpdate('cascade');
-            $table->foreign('district_id')->references('district_id')->on('districts')->cascadeOnDelete('set null')->cascadeOnUpdate('cascade');
+            $table->foreign('transaction_id')->references('id')->on('transactions')->cascadeOnDelete('set null')->cascadeOnUpdate('cascade');
+            $table->foreign('beneficiary_id')->references('id')->on('beneficiary_datas')->cascadeOnDelete('set null')->cascadeOnUpdate('cascade');
+            $table->foreign('region_id')->references('id')->on('regions')->cascadeOnDelete('set null')->cascadeOnUpdate('cascade');
+            $table->foreign('province_id')->references('id')->on('provinces')->cascadeOnDelete('set null')->cascadeOnUpdate('cascade');
+            $table->foreign('municipality_id')->references('id')->on('municipalities')->cascadeOnDelete('set null')->cascadeOnUpdate('cascade');
+            $table->foreign('barangay_id')->references('id')->on('barangays')->cascadeOnDelete('set null')->cascadeOnUpdate('cascade');
+            $table->foreign('district_id')->references('id')->on('districts')->cascadeOnDelete('set null')->cascadeOnUpdate('cascade');
         });
     }
 

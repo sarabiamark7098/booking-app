@@ -12,22 +12,22 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('beneficiary_datas', function (Blueprint $table) {
-            $table->id("beneficiary_id");
+            $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->string('first_name')->nullable();
-            $table->string('middle_name')->nullable();
-            $table->string('last_name')->nullable();
-            $table->string('extra_name')->nullable();
+            $table->string('firstName')->nullable();
+            $table->string('middleName')->nullable();
+            $table->string('lastName')->nullable();
+            $table->string('extensionName')->nullable();
             $table->enum('sex', ['Male', 'Female'])->nullable();
-            $table->enum('civil_status', ['Single', 'Married', 'Common-law', 'Separated', 'Widow/Widowed'])->nullable();
-            $table->date('date_of_birth')->nullable();
+            $table->enum('civilStatus', ['Single', 'Married', 'Common-law', 'Separated', 'Widow/Widowed'])->nullable();
+            $table->date('dateOfBirth')->nullable();
             $table->string('occupation')->nullable();
             $table->float('salary')->nullable();
-            $table->string('contact')->nullable();
+            $table->string('contactNumber')->unique()->min(11)->max(11);
             $table->enum('status', ['Registered Online', 'Encoded Offline', 'Imported Data'])->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('user_id')->on('users')->cascadeOnDelete('set null')->cascadeOnUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete('set null')->cascadeOnUpdate('cascade');
         });
     }
 

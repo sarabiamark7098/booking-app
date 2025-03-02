@@ -19,7 +19,7 @@ return new class extends Migration
             $table->enum('mode', ['Guarantee Letter', 'Cash Assistance Voucher', 'Distribution Sheet'])->nullable();
             $table->timestamps();
 
-            $table->foreign('transaction_id')->references('transaction_id')->on('transactions')->cascadeOnDelete('set null')->cascadeOnUpdate('cascade');
+            $table->foreign('transaction_id')->references('id')->on('transactions')->cascadeOnDelete('set null')->cascadeOnUpdate('cascade');
         });
     }
 

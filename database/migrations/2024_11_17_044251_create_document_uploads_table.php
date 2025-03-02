@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('document_uploads', function (Blueprint $table) {
-            $table->id("document_id");
-            $table->unsignedBigInteger('transaction_php aid')->nullable();
-            $table->string('Document')->nullable();
+            $table->id();
+            $table->unsignedBigInteger('transaction_id')->nullable();
+            $table->string('Documents')->nullable();
             $table->timestamps();
 
-            $table->foreign('transaction_id')->references('transaction_id')->on('transactions')->cascadeOnDelete('set null')->cascadeOnUpdate('cascade');
+            $table->foreign('transaction_id')->references('id')->on('transactions')->cascadeOnDelete('set null')->cascadeOnUpdate('cascade');
         });
     }
 

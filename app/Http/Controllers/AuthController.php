@@ -33,7 +33,6 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password
         ]);
 
         // Return a success response
