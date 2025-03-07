@@ -43,28 +43,6 @@ class BeneficiaryDatasController extends Controller
             "contactNumber" => "string|required",
             "email" => "string|required|email|unique:users,email",
         ]);
-        // $profile = BeneficiaryDatas::create($validated);
-        // DB::transaction(function () use ($validated) {
-        //     // Insert into users table
-        //     $user = User::create([
-        //         'email' => $validated['email'],
-        //     ]);
-
-        //     // Insert into beneficiary_datas table
-        //     BeneficiaryDatas::create([
-        //         'user_id' => $user->id, // Link to the newly created user
-        //         'firstName' => $validated['firstName'],
-        //         'middleName' => $validated['middleName'],
-        //         'lastName' => $validated['lastName'],
-        //         'extensionName' => $validated['extensionName'],
-        //         'contact_number' => $validated['contactNumber'],
-        //     ]);
-        // });
-        // return response()->json([
-        //     'success' => true,
-        //     'message' => 'User registered successfully.',
-        //     // 'user' => $user,
-        // ], 201);
         try {
             DB::beginTransaction();
     
@@ -85,6 +63,7 @@ class BeneficiaryDatasController extends Controller
             DB::commit();
     
             return response()->json([
+                'success' => true,
                 'message' => 'Beneficiary and User created successfully'
             ], 201);
     

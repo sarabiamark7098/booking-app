@@ -21,4 +21,8 @@ class BeneficiaryDatas extends Model
         'salary',
         'status_report'
     ];
+
+    public function beneficiary_user(){
+        return $this->belongsTo(User::class);
+    }
 }

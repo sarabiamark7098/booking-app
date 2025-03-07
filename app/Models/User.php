@@ -48,6 +48,6 @@ class User extends Authenticatable
     }
 
     public function user_client(){
-        return $this->hasOne(Profile::class);
+        return $this->hasOne(BeneficiaryDatas::class);
     }
 }
