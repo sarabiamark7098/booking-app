@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('barangays', function (Blueprint $table) {
             $table->id();
-            $table->string('barangay_psgc')->nullable();
-            $table->string('barangay')->nullable();
+            $table->string('psgc_code')->unique();
+            $table->string('name');
+            $table->foreignId('municipality_id')->constrained('municipalities')->onDelete('cascade');
             $table->timestamps();
         });
     }

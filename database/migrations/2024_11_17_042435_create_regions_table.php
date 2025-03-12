@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('regions', function (Blueprint $table) {
             $table->id();
-            $table->string('region_psgc')->nullable();
-            $table->string('region')->nullable();
+            $table->string('psgc_code')->unique();
+            $table->string('name');
+            $table->string('short_name')->nullable();
             $table->timestamps();
         });
     }

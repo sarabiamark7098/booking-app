@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('municipalities', function (Blueprint $table) {
             $table->id();
-            $table->string('municipality_psgc')->nullable();
-            $table->string('municipality')->nullable();
-            $table->timestamps();
+            $table->string('psgc_code')->unique();
+            $table->string('name');
+            $table->foreignId('province_id')->constrained('provinces')->onDelete('cascade');
+        $table->timestamps();
         });
     }
 
