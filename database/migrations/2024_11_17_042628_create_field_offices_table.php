@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('field_offices', function (Blueprint $table) {
             $table->id();
-            $table->string('office_name')->nullable();
+            $table->string('office_name');
             $table->string('office_description')->nullable();
-            $table->string('office_acronym')->nullable();
+            $table->string('office_acronym')->unique();
+            $table->foreignId('parent_id')->nullable()->constrained('field_offices')->onDelete('cascade'); // Self-referencing FK
+            $table->foreignId('province_id')->nullable()->constrained('provinces')->onDelete('set null');
             $table->timestamps();
         });
     }

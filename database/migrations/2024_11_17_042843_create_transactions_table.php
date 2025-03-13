@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('client_id')->nullable();
+            $table->string('transaction_id', 20)->unique();
+            $table->unsignedBigInteger('client_id');
             $table->unsignedBigInteger('beneficiary_id')->nullable();
             $table->unsignedBigInteger('relation_id')->nullable();
             $table->enum('status_client', ['Pending', 'For Interview', 'Serving', 'Served', 'Declined'])->default('Pending')->nullable();

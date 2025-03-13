@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Province extends Model
 {
-    protected $fillable = ['psgc_code', 'name', 'region_id'];
+    protected $fillable = ['psgc_code', 'name', 'region_id', 'field_office_id'];
 
     public function region()
     {
@@ -17,4 +17,11 @@ class Province extends Model
     {
         return $this->hasMany(Municipality::class);
     }
+
+
+    public function fieldOffice()
+    {
+        return $this->hasMany(FieldOffice::class);
+    }
+
 }
